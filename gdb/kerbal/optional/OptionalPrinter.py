@@ -19,10 +19,16 @@ from kerbal.memory.RawStoragePrinter import RawStoragePrinter
 @register_printer("^kerbal::optional::optional<.*>$")
 class OptionalPrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
-    def has_value(self) -> bool:
+    def has_value(self):
+        """
+        @return: bool
+        """
         return self.__val["_K_has_value"]
 
     def dump(self):

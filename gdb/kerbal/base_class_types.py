@@ -12,7 +12,10 @@
 import gdb
 
 
-def base_class_types(type: gdb.Type):
+def base_class_types(type):
+    """
+    @param type: gdb.Type
+    """
     r = []
     for field in type.fields():
         if field.is_base_class:

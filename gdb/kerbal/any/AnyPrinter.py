@@ -19,7 +19,10 @@ from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
 
 class AnyAllocatorOverload(MemberCompressHelper):
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         member_compress_helper_type = base_class_types(val.type)[0]  # member_compress_helper
         MemberCompressHelper.__init__(self, val.cast(member_compress_helper_type))
 
@@ -37,7 +40,10 @@ class AnyAllocatorOverload(MemberCompressHelper):
 @register_printer("^kerbal::any::basic_any<.*,.*,.*>$")
 class AnyPrinter(AnyAllocatorOverload):
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         AnyAllocatorOverload.__init__(self, val)
         self.__val = val
 

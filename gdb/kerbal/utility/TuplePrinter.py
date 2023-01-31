@@ -19,7 +19,10 @@ from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
 @register_printer("^kerbal::utility::tuple<.*>$")
 class TuplePrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
         self.__member_compress_helpers = []
 
@@ -30,11 +33,18 @@ class TuplePrinter:
     def size(self):
         return len(self.__member_compress_helpers)
 
-    def get(self, idx: int):
+    def get(self, idx):
+        """
+        @param idx: int
+        """
         helper = self.__member_compress_helpers[idx]
         return helper.member()
 
-    def i_is_compressed(self, idx: int) -> bool:
+    def i_is_compressed(self, idx):
+        """
+        @param idx: int
+        @return: bool
+        """
         helper = self.__member_compress_helpers[idx]
         return helper.is_compressed()
 

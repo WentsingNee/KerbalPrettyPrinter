@@ -14,7 +14,10 @@ import re
 pattern_printer_type_list = []
 
 
-def register_printer(pattern_s: str):
+def register_printer(pattern_s):
+    """
+    @param pattern_s: str
+    """
     def pattern_helper(printer_type):
         print("binding type pattern: {} with printer: {}".format(pattern_s, str(printer_type)))
         pattern = re.compile(pattern_s)

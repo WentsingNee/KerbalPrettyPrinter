@@ -17,7 +17,10 @@ from kerbal.register_printer import register_printer
 @register_printer("kerbal::utility::noncopyconstructible")
 class NoncopyconstructiblePrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     @staticmethod
@@ -28,7 +31,10 @@ class NoncopyconstructiblePrinter:
 @register_printer("kerbal::utility::noncopyassignable")
 class NoncopyassignablePrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     @staticmethod
@@ -39,7 +45,10 @@ class NoncopyassignablePrinter:
 @register_printer("kerbal::utility::noncopyable")
 class NoncopyablePrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     @staticmethod

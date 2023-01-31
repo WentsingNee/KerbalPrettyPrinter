@@ -19,7 +19,10 @@ from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
 @register_printer("^kerbal::utility::compressed_pair<.*,.*>$")
 class CompressedPairPrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def dump(self):

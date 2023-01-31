@@ -19,26 +19,39 @@ from kerbal.base_class_types import base_class_types
 class MemberCompressHelper:
 
     @staticmethod
-    def cast_inheritance_to_member_compress_helper(value: gdb.Value) -> gdb.Value:
-        def impl(value: gdb.Value):
-            value_type = value.type
+    def cast_inheritance_to_member_compress_helper(val):
+        """
+        @param val: gdb.Value
+        @return: gdb.Value
+        """
+        def impl(val):
+            """
+            @param val: gdb.Value
+            """
+            value_type = val.type
             if re.match(r"^kerbal::utility::member_compress_helper<.*,.*>$", value_type.name):
-                return value
+                return val
             for base_type in base_class_types(value_type):
-                value_after_cast = impl(value.cast(base_type))
+                value_after_cast = impl(val.cast(base_type))
                 if not value_after_cast is None:
                     return value_after_cast
             return None
 
-        value_after_cast = impl(value)
+        value_after_cast = impl(val)
         if value_after_cast is None:
-            raise Exception("type: {} is not member_compress_helper".format(value.type.name))
+            raise Exception("type: {} is not member_compress_helper".format(val.type.name))
         return value_after_cast
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = MemberCompressHelper.cast_inheritance_to_member_compress_helper(val)
 
-    def is_compressed(self) -> bool:
+    def is_compressed(self):
+        """
+        @return: bool
+        """
         self_type = self.__val.type
 
         if self_type.has_key("_K_member"):
@@ -47,11 +60,17 @@ class MemberCompressHelper:
         super_type = base_class_types(self_type)[0]
         return not super_type.has_key("_K_member")
 
-    def value_type(self) -> gdb.Type:
+    def value_type(self):
+        """
+        @return: gdb.Type
+        """
         self_type = self.__val.type
         return self_type.template_argument(0)
 
-    def member(self) -> gdb.Value:
+    def member(self):
+        """
+        @return: gdb.Value
+        """
         if self.is_compressed():
             return self.__val.cast(self.value_type())
         else:

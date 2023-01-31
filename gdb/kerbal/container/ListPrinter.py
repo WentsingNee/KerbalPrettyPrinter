@@ -19,7 +19,10 @@ from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRe
 @register_printer("^kerbal::container::detail::list_node_base$")
 class ListNodeBasePrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     void_type = gdb.lookup_type("void")
@@ -40,7 +43,10 @@ class ListNodeBasePrinter:
 @register_printer("^kerbal::container::detail::list_node<.*>$")
 class ListNodePrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def dump(self):
@@ -59,7 +65,10 @@ class ListNodePrinter:
 
 class ListIteratorPrinterBase:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def dump(self):
@@ -90,7 +99,10 @@ class ListConstIteratorPrinter(ListIteratorPrinterBase):
 @register_printer("^kerbal::container::detail::list_allocator_unrelated<.*>$")
 class ListAllocatorUnrelatedPrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def head(self):
@@ -127,7 +139,10 @@ class ListAllocatorUnrelatedPrinter:
 @register_printer("^kerbal::container::list<.*,.*>$")
 class ListPrinter(ContainerRebindAllocatorOverloadPrinter, ListAllocatorUnrelatedPrinter):
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         ContainerRebindAllocatorOverloadPrinter.__init__(self, val)
         ListAllocatorUnrelatedPrinter.__init__(self, val)
 

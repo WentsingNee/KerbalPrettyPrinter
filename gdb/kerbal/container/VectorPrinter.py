@@ -19,7 +19,10 @@ from kerbal.container.ContainerAllocatorOverloadPrinter import ContainerAllocato
 @register_printer("^kerbal::container::detail::vector_allocator_unrelated<.*>$")
 class VectorAllocatorUnrelatedPrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def size(self):
@@ -54,7 +57,10 @@ class VectorAllocatorUnrelatedPrinter:
 @register_printer("^kerbal::container::vector<.*,.*>$")
 class VectorPrinter(ContainerAllocatorOverloadPrinter, VectorAllocatorUnrelatedPrinter):
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         ContainerAllocatorOverloadPrinter.__init__(self, val)
         VectorAllocatorUnrelatedPrinter.__init__(self, val)
 

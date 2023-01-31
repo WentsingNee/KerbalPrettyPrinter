@@ -17,7 +17,10 @@ from kerbal.register_printer import register_printer
 @register_printer("^kerbal::iterator::reverse_iterator<.*>$")
 class ReverseIteratorPrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def dump(self):

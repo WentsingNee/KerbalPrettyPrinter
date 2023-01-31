@@ -17,7 +17,10 @@ from kerbal.register_printer import register_printer
 @register_printer("^kerbal::bitset::static_bitset<.*,.*>$")
 class StaticBitsetPrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def size(self):

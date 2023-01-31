@@ -17,7 +17,10 @@ from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRe
 
 class ForwardListIteratorPrinterBase:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def dump(self):
@@ -48,7 +51,10 @@ class ForwardListConstIteratorPrinter(ForwardListIteratorPrinterBase):
 @register_printer("^kerbal::container::detail::fl_allocator_unrelated<.*>$")
 class ForwardListAllocatorUnrelatedPrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def head(self):
@@ -85,7 +91,10 @@ class ForwardListAllocatorUnrelatedPrinter:
 @register_printer("^kerbal::container::forward_list<.*,.*>$")
 class ForwardListPrinter(ContainerRebindAllocatorOverloadPrinter, ForwardListAllocatorUnrelatedPrinter):
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         ContainerRebindAllocatorOverloadPrinter.__init__(self, val)
         ForwardListAllocatorUnrelatedPrinter.__init__(self, val)
 

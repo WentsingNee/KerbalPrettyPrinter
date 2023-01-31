@@ -19,7 +19,10 @@ from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
 @register_printer("^kerbal::container::detail::container_rebind_allocator_overload<.*,.*>$")
 class ContainerRebindAllocatorOverloadPrinter(MemberCompressHelper):
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         member_compress_helper_type = base_class_types(val.type)[0]  # member_compress_helper
         MemberCompressHelper.__init__(self, val.cast(member_compress_helper_type))
 

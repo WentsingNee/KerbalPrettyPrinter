@@ -16,7 +16,10 @@ from kerbal.register_printer import pattern_printer_type_list
 value_type_str_to_printer_map = {}
 
 
-def printer_lookup(cxx_value: gdb.Value):
+def printer_lookup(cxx_value):
+    """
+    @param cxx_value: gdb.Value
+    """
     cxx_value_type = cxx_value.type.strip_typedefs().unqualified()
     s = str(cxx_value_type)
 

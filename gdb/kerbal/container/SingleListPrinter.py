@@ -19,7 +19,10 @@ from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRe
 @register_printer("^kerbal::container::detail::sl_node_base$")
 class SingleListNodeBasePrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     void_type = gdb.lookup_type("void")
@@ -39,7 +42,10 @@ class SingleListNodeBasePrinter:
 @register_printer("^kerbal::container::detail::sl_node<.*>$")
 class SingleListNodePrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def dump(self):
@@ -59,7 +65,10 @@ class SingleListNodePrinter:
 @register_printer("^kerbal::container::detail::sl_allocator_unrelated<.*>$")
 class SingleListAllocatorUnrelatedPrinter:
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         self.__val = val
 
     def head(self):
@@ -96,7 +105,10 @@ class SingleListAllocatorUnrelatedPrinter:
 @register_printer("^kerbal::container::single_list<.*,.*>$")
 class SingleListPrinter(ContainerRebindAllocatorOverloadPrinter, SingleListAllocatorUnrelatedPrinter):
 
-    def __init__(self, val: gdb.Value):
+    def __init__(self, val):
+        """
+        @param val: gdb.Value
+        """
         ContainerRebindAllocatorOverloadPrinter.__init__(self, val)
         SingleListAllocatorUnrelatedPrinter.__init__(self, val)
 
