@@ -9,11 +9,8 @@
 #   all rights reserved
 #
 
-import gdb
-
-from kerbal.register_printer import register_printer
-from kerbal.base_class_types import base_class_types
 from kerbal.container.ContainerAllocatorOverloadPrinter import ContainerAllocatorOverloadPrinter
+from kerbal.register_printer import register_printer
 
 
 @register_printer("^kerbal::container::detail::vector_allocator_unrelated<.*>$")

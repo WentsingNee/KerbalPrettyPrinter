@@ -9,11 +9,9 @@
 #   all rights reserved
 #
 
-import gdb
-
 from kerbal.base_class_types import base_class_types
-from kerbal.register_printer import register_printer
 from kerbal.memory.RawStoragePrinter import RawStoragePrinter
+from kerbal.register_printer import register_printer
 
 
 @register_printer("^kerbal::optional::optional<.*>$")

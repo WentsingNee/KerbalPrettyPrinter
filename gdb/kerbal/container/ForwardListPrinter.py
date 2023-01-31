@@ -9,10 +9,10 @@
 #   all rights reserved
 #
 
-import gdb
-
-from kerbal.register_printer import register_printer
 from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRebindAllocatorOverloadPrinter
+from kerbal.register_printer import register_printer
+
+import gdb
 
 
 class ForwardListIteratorPrinterBase:

@@ -9,8 +9,6 @@
 #   all rights reserved
 #
 
-import gdb
-
 
 def base_class_types(type):
     """

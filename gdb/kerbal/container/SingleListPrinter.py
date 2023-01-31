@@ -9,11 +9,11 @@
 #   all rights reserved
 #
 
-import gdb
-
-from kerbal.register_printer import register_printer
 from kerbal.base_class_types import base_class_types
 from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRebindAllocatorOverloadPrinter
+from kerbal.register_printer import register_printer
+
+import gdb
 
 
 @register_printer("^kerbal::container::detail::sl_node_base$")

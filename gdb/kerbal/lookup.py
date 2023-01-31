@@ -9,9 +9,9 @@
 #   all rights reserved
 #
 
-import gdb
-
 from kerbal.register_printer import pattern_printer_type_list
+
+import gdb
 
 value_type_str_to_printer_map = {}
 

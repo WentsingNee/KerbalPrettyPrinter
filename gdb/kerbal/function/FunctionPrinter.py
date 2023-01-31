@@ -9,12 +9,12 @@
 #   all rights reserved
 #
 
-import gdb
 import re
 
-from kerbal.register_printer import register_printer
 from kerbal.base_class_types import base_class_types
 from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
+
+import gdb
 
 
 class FunctionAllocatorOverload(MemberCompressHelper):

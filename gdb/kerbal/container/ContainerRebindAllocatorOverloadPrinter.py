@@ -9,10 +9,8 @@
 #   all rights reserved
 #
 
-import gdb
-
-from kerbal.register_printer import register_printer
 from kerbal.base_class_types import base_class_types
+from kerbal.register_printer import register_printer
 from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
 
 

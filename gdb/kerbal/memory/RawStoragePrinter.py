@@ -9,8 +9,6 @@
 #   all rights reserved
 #
 
-import gdb
-
 from kerbal.register_printer import register_printer
 
 
