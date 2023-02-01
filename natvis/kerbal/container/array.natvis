@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--2023-02-01-->
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+	<Type Name="kerbal::container::array&lt;*,*&gt;">
+		<DisplayString>{{ size= {$T2} }}</DisplayString>
+		<Expand>
+			<Item Name="[size]" ExcludeView="simple">$T2</Item>
+			<ArrayItems>
+				<Size>$T2</Size>
+				<ValuePointer>_K_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+</AutoVisualizer>

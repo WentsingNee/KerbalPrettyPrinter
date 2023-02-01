@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--2023-02-01-->
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+	<Type Name="kerbal::container::detail::sl_node&lt;*&gt;">
+		<Expand>
+			<Item Name="value">value</Item>
+			<Item Name="this">static_cast&lt;void * &gt;(this)</Item>
+			<Item Name="next">static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(next)</Item>
+		</Expand>
+	</Type>
+
+</AutoVisualizer>

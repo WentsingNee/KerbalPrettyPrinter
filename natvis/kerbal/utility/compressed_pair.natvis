@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--2023-02-01-->
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+	<Type Name="kerbal::utility::compressed_pair&lt;*,*&gt;">
+		<Intrinsic Name="isFirstCompressed"  Expression="__is_base_of($T1, kerbal::utility::member_compress_helper&lt;$T1,0&gt;)"/>
+		<Intrinsic Name="isSecondCompressed" Expression="__is_base_of($T2, kerbal::utility::member_compress_helper&lt;$T2,0&gt;)"/>
+		<Expand>
+			<Item Name="first (compressed)"      Optional="true" Condition=" isFirstCompressed()">
+				*static_cast&lt;$T1*&gt;(
+					static_cast&lt;kerbal::utility::member_compress_helper&lt;$T1,0&gt;*&gt;(this)
+				)
+			</Item>
+			<Item Name="first (not compressed)"  Optional="true" Condition="!isFirstCompressed()">
+				static_cast&lt;kerbal::utility::member_compress_helper&lt;$T1,0&gt;*&gt;(this)->_K_member</Item>
+			<Item Name="second (compressed)"     Optional="true" Condition=" isSecondCompressed()">
+				*static_cast&lt;$T2*&gt;(
+					static_cast&lt;kerbal::utility::member_compress_helper&lt;$T2,0&gt;*&gt;(this)
+				)
+			</Item>
+			<Item Name="second (not compressed)" Optional="true" Condition="!isSecondCompressed()">
+				static_cast&lt;kerbal::utility::member_compress_helper&lt;$T2,0&gt;*&gt;(this)->_K_member</Item>
+		</Expand>
+	</Type>
+
+</AutoVisualizer>

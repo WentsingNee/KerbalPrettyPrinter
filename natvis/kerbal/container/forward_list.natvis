@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--2023-02-01-->
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+	<Type Name="kerbal::container::forward_list&lt;*,*&gt;">
+		<DisplayString>{{ forward_list }}</DisplayString>
+		<Expand>
+			<CustomListItems MaxItemsPerView="50" ExcludeView="Test">
+				<Variable Name="size" InitialValue="0" />
+				<Variable Name="pNodeBase" InitialValue="head_node.next" />
+				<Variable Name="pNode" InitialValue="static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(nullptr)" />
+				<Loop>
+					<If Condition="pNodeBase == nullptr">
+						<Break/>
+					</If>
+					<Exec>pNode = static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(pNodeBase)</Exec>
+					<Item>pNode</Item>
+					<Exec>pNodeBase = pNodeBase->next</Exec>
+					<Exec>++size</Exec>
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+
+	<Type Name="kerbal::container::detail::fl_iter&lt;*&gt;">
+		<Expand>
+			<Item Name="*">static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(current)</Item>
+		</Expand>
+	</Type>
+
+	<Type Name="kerbal::container::detail::fl_kiter&lt;*&gt;">
+		<Expand>
+			<Item Name="*">static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(current)</Item>
+		</Expand>
+	</Type>
+
+</AutoVisualizer>
