@@ -27,7 +27,7 @@ class OptionalPrinter:
         """
         @return: bool
         """
-        return self.__val["_K_has_value"]
+        return self.__val["k_has_value"]
 
     def dump(self):
         optional_base_type = base_class_types(self.__val.type)[0]

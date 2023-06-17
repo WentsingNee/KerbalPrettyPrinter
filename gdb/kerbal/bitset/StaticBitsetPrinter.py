@@ -25,7 +25,7 @@ class StaticBitsetPrinter:
         return self.__val.type.template_argument(0)
 
     def block_size(self):
-        return self.__val["_K_block"].type.range()[1] + 1
+        return self.__val["k_block"].type.range()[1] + 1
 
     def block_type(self):
         return self.__val.type.template_argument(1)
@@ -47,7 +47,7 @@ class StaticBitsetPrinter:
         for i in range(self.block_size()):
             l = i * block_width * 8
             r = (i + 1) * block_width * 8
-            x = self.f(self.__val["_K_block"][i])
+            x = self.f(self.__val["k_block"][i])
             yield "{} ~ {} : {}".format(l, r, x), x
 
     def children(self):

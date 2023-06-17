@@ -3,13 +3,13 @@
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
 
 	<Type Name="kerbal::container::vector&lt;*&gt;">
-		<DisplayString>{{ size={_K_size} }}</DisplayString>
+		<DisplayString>{{ size={k_size} }}</DisplayString>
 		<Expand>
-			<Item Name="[size]" ExcludeView="simple">_K_size</Item>
-			<Item Name="[capacity]" ExcludeView="simple">_K_capacity</Item>
+			<Item Name="[size]" ExcludeView="simple">k_size</Item>
+			<Item Name="[capacity]" ExcludeView="simple">k_capacity</Item>
 			<ArrayItems>
-				<Size>_K_size</Size>
-				<ValuePointer>_K_buffer</ValuePointer>
+				<Size>k_size</Size>
+				<ValuePointer>k_buffer</ValuePointer>
 			</ArrayItems>
 		</Expand>
 	</Type>

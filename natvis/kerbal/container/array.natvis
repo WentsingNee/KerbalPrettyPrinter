@@ -8,7 +8,7 @@
 			<Item Name="[size]" ExcludeView="simple">$T2</Item>
 			<ArrayItems>
 				<Size>$T2</Size>
-				<ValuePointer>_K_data</ValuePointer>
+				<ValuePointer>k_data</ValuePointer>
 			</ArrayItems>
 		</Expand>
 	</Type>

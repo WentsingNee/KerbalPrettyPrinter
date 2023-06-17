@@ -6,7 +6,7 @@
 		<Intrinsic Name="isCompressed" Expression="__is_base_of($T1, kerbal::utility::member_compress_helper&lt;$T1,$T2&gt;)"/>
 		<Expand>
 			<Item Name="member (compressed)"     Optional="true" Condition=" isCompressed()">*static_cast&lt;$T1*&gt;(this)</Item>
-			<Item Name="member (not compressed)" Optional="true" Condition="!isCompressed()">_K_member</Item>
+			<Item Name="member (not compressed)" Optional="true" Condition="!isCompressed()">k_member</Item>
 		</Expand>
 	</Type>
 

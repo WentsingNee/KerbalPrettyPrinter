@@ -12,14 +12,14 @@
 				)
 			</Item>
 			<Item Name="first (not compressed)"  Optional="true" Condition="!isFirstCompressed()">
-				static_cast&lt;kerbal::utility::member_compress_helper&lt;$T1,0&gt;*&gt;(this)->_K_member</Item>
+				static_cast&lt;kerbal::utility::member_compress_helper&lt;$T1,0&gt;*&gt;(this)->k_member</Item>
 			<Item Name="second (compressed)"     Optional="true" Condition=" isSecondCompressed()">
 				*static_cast&lt;$T2*&gt;(
 					static_cast&lt;kerbal::utility::member_compress_helper&lt;$T2,0&gt;*&gt;(this)
 				)
 			</Item>
 			<Item Name="second (not compressed)" Optional="true" Condition="!isSecondCompressed()">
-				static_cast&lt;kerbal::utility::member_compress_helper&lt;$T2,0&gt;*&gt;(this)->_K_member</Item>
+				static_cast&lt;kerbal::utility::member_compress_helper&lt;$T2,0&gt;*&gt;(this)->k_member</Item>
 		</Expand>
 	</Type>
 

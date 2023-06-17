@@ -53,11 +53,11 @@ class MemberCompressHelper:
         """
         self_type = self.__val.type
 
-        if self_type.has_key("_K_member"):
+        if self_type.has_key("k_member"):
             return False
 
         super_type = base_class_types(self_type)[0]
-        return not super_type.has_key("_K_member")
+        return not super_type.has_key("k_member")
 
     def value_type(self):
         """
@@ -73,7 +73,7 @@ class MemberCompressHelper:
         if self.is_compressed():
             return self.__val.cast(self.value_type())
         else:
-            return self.__val["_K_member"]
+            return self.__val["k_member"]
 
 
 @register_printer("^kerbal::utility::member_compress_helper<.*,.*>$")

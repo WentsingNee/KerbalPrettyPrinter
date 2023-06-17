@@ -23,12 +23,12 @@ class VectorAllocatorUnrelatedPrinter:
         self.__val = val
 
     def size(self):
-        return self.__val["_K_size"]
+        return self.__val["k_size"]
 
     def head(self):
         d = [
-            ("capacity", self.__val["_K_capacity"]),
-            ("size", self.__val["_K_size"]),
+            ("capacity", self.__val["k_capacity"]),
+            ("size", self.__val["k_size"]),
         ]
         return d
 
@@ -40,7 +40,7 @@ class VectorAllocatorUnrelatedPrinter:
         i = 0
         sz = self.size()
         while i < sz:
-            yield "[{}]".format(i), self.__val["_K_buffer"][i]
+            yield "[{}]".format(i), self.__val["k_buffer"][i]
             i = i + 1
 
     def children(self):

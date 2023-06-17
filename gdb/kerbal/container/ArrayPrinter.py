@@ -22,7 +22,7 @@ class ArrayPrinter:
         self.__val = val
 
     def size(self):
-        return self.__val["_K_data"].type.range()[1] + 1
+        return self.__val["k_data"].type.range()[1] + 1
 
     def dump(self):
         d = dict(self.children())
@@ -30,7 +30,7 @@ class ArrayPrinter:
 
     def each(self):
         for i in range(self.size()):
-            yield "[{}]".format(i), self.__val["_K_data"][i]
+            yield "[{}]".format(i), self.__val["k_data"][i]
 
     def children(self):
         for e in self.each():

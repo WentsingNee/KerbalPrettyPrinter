@@ -26,7 +26,7 @@ class RawStoragePrinter:
 
     def raw_value(self):
         pointer_type = self.value_type().pointer()
-        return self.__val["_K_storage"].address.reinterpret_cast(pointer_type).dereference()
+        return self.__val["k_storage"].address.reinterpret_cast(pointer_type).dereference()
 
     def dump(self):
         return "value", self.raw_value()
