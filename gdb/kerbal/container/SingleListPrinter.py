@@ -11,6 +11,7 @@
 
 from kerbal.base_class_types import base_class_types
 from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRebindAllocatorOverloadPrinter
+from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
 from kerbal.register_printer import register_printer
 
 import gdb
@@ -49,13 +50,18 @@ class SingleListNodePrinter:
         self.__val = val
 
     def dump(self):
-        node_base_type = base_class_types(self.__val.type)[0]
-        node_base_ptr_type = node_base_type.pointer()
+        node_base_type, member_compress_helper_type = base_class_types(self.__val.type)
 
-        d = [
-            ("value", self.__val["value"]),
-            ("node base", self.__val.address.cast(node_base_ptr_type).dereference()),
-        ]
+        as_member_compress_helper = self.__val.cast(member_compress_helper_type)
+        member_compress_helper = MemberCompressHelper(as_member_compress_helper)
+
+        d = []
+        if member_compress_helper.is_compressed():
+            d.append(("value (compressed)", member_compress_helper.member()))
+        else:
+            d.append(("value", member_compress_helper.member()))
+        d.append(("node base", self.__val.cast(node_base_type)))
+
         return d
 
     def children(self):

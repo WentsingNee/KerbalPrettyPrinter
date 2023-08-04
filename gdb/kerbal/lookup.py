@@ -23,6 +23,16 @@ def printer_lookup(cxx_value):
     cxx_value_type = cxx_value.type.strip_typedefs().unqualified()
     s = str(cxx_value_type)
 
+    if cxx_value_type == gdb.lookup_type("kerbal::container::detail::avl_node_base"):
+        if cxx_value["height"] == 0:
+            class AVLVNULLNodePrinter:
+                def to_string(self):
+                    return "VNULL"
+
+                def display_hint(self):
+                    return 'xxx'
+            return AVLVNULLNodePrinter()
+
     if s not in value_type_str_to_printer_map:
         has_printer = False
         for pattern, printer_type in pattern_printer_type_list:

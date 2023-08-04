@@ -9,7 +9,9 @@
 #   all rights reserved
 #
 
+import kerbal.container.detail
 import kerbal.container.ArrayPrinter
+import kerbal.container.AVLSetPrinter
 import kerbal.container.ContainerAllocatorOverloadPrinter
 import kerbal.container.ContainerRebindAllocatorOverloadPrinter
 import kerbal.container.ForwardListPrinter
