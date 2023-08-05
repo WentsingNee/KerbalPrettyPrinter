@@ -12,7 +12,7 @@
 import re
 
 from kerbal.base_class_types import base_class_types
-from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
+from kerbal.utility.MemberCompressHelper import MemberCompressHelper
 
 import gdb
 

@@ -1,5 +1,5 @@
 #
-# @file       MemberCompressHelperPrinter.py
+# @file       MemberCompressHelper.py
 # @brief
 # @date       2021-05-28
 # @author     Peter
@@ -12,9 +12,10 @@
 import re
 
 from kerbal.base_class_types import base_class_types
-from kerbal.register_printer import register_printer
+from kerbal.register_class import register_class
 
 
+@register_class("^kerbal::utility::member_compress_helper<.*,.*>$")
 class MemberCompressHelper:
 
     @staticmethod
@@ -75,8 +76,11 @@ class MemberCompressHelper:
         else:
             return self.__val["k_member"]
 
+    @staticmethod
+    def get_printer(val):
+        return MemberCompressHelperPrinter(val)
 
-@register_printer("^kerbal::utility::member_compress_helper<.*,.*>$")
+
 class MemberCompressHelperPrinter(MemberCompressHelper):
 
     def dump(self):

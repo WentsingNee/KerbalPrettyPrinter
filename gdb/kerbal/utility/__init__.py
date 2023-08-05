@@ -10,6 +10,6 @@
 #
 
 from kerbal.utility import CompressedPairPrinter
-from kerbal.utility import MemberCompressHelperPrinter
-from kerbal.utility import NoncopyablePrinter
+from kerbal.utility import MemberCompressHelper
+from kerbal.utility import Noncopyable
 from kerbal.utility import TuplePrinter

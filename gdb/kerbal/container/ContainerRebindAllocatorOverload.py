@@ -1,5 +1,5 @@
 #
-# @file       ContainerRebindAllocatorOverloadPrinter.py
+# @file       ContainerRebindAllocatorOverload.py
 # @brief
 # @date       2022-04-07
 # @author     Peter
@@ -10,12 +10,13 @@
 #
 
 from kerbal.base_class_types import base_class_types
-from kerbal.register_printer import register_printer
-from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
+from kerbal.register_class import register_class
+
+from kerbal.utility.MemberCompressHelper import MemberCompressHelper
 
 
-@register_printer("^kerbal::container::detail::container_rebind_allocator_overload<.*,.*>$")
-class ContainerRebindAllocatorOverloadPrinter(MemberCompressHelper):
+@register_class("^kerbal::container::detail::container_rebind_allocator_overload<.*,.*>$")
+class ContainerRebindAllocatorOverload(MemberCompressHelper):
 
     def __init__(self, val):
         """
@@ -23,6 +24,13 @@ class ContainerRebindAllocatorOverloadPrinter(MemberCompressHelper):
         """
         member_compress_helper_type = base_class_types(val.type)[0]  # member_compress_helper
         MemberCompressHelper.__init__(self, val.cast(member_compress_helper_type))
+
+    @staticmethod
+    def get_printer(val):
+        return ContainerRebindAllocatorOverloadPrinter(val)
+
+
+class ContainerRebindAllocatorOverloadPrinter(ContainerRebindAllocatorOverload):
 
     def dump(self):
         d = []
@@ -36,4 +44,3 @@ class ContainerRebindAllocatorOverloadPrinter(MemberCompressHelper):
 
     def children(self):
         return self.dump()
-

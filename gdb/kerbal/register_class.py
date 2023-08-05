@@ -1,5 +1,5 @@
 #
-# @file       register_printer.py
+# @file       register_class.py
 # @brief
 # @date       2020-07-17
 # @author     Peter
@@ -11,18 +11,18 @@
 
 import re
 
-pattern_printer_type_list = []
+pattern_class_type_list = []
 
 
-def register_printer(pattern_s):
+def register_class(pattern_s):
     """
     @param pattern_s: str
     """
 
-    def pattern_helper(printer_type):
-        print("binding type pattern: {} with printer: {}".format(pattern_s, str(printer_type)))
+    def pattern_helper(py_type):
+        print("binding type pattern: {} with class: {}".format(pattern_s, str(py_type)))
         pattern = re.compile(pattern_s)
-        pattern_printer_type_list.append((pattern, printer_type))
-        return printer_type
+        pattern_class_type_list.append((pattern, py_type))
+        return py_type
 
     return pattern_helper

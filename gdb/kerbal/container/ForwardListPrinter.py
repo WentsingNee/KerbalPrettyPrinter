@@ -9,7 +9,7 @@
 #   all rights reserved
 #
 
-from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRebindAllocatorOverloadPrinter
+from kerbal.container.ContainerRebindAllocatorOverload import ContainerRebindAllocatorOverloadPrinter
 from kerbal.register_printer import register_printer
 
 import gdb

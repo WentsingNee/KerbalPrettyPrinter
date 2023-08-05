@@ -1,7 +1,7 @@
 #
 # @file       __init__.py
 # @brief
-# @date       2020-08-16
+# @date       2023-08-04
 # @author     Peter
 # @copyright
 #      Peter of [ThinkSpirit Laboratory](http://thinkspirit.org/)
@@ -9,4 +9,5 @@
 #   all rights reserved
 #
 
-from kerbal.iterator import ReverseIterator
+import kerbal.container.detail.vector_base.VectorAllocatorUnrelated
+import kerbal.container.detail.vector_base.VectorIterator

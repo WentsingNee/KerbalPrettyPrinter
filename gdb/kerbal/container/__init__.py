@@ -10,11 +10,11 @@
 #
 
 import kerbal.container.detail
-import kerbal.container.ArrayPrinter
-import kerbal.container.AVLSetPrinter
-import kerbal.container.ContainerAllocatorOverloadPrinter
-import kerbal.container.ContainerRebindAllocatorOverloadPrinter
+import kerbal.container.Array
+import kerbal.container.AVLSet
+import kerbal.container.ContainerAllocatorOverload
+import kerbal.container.ContainerRebindAllocatorOverload
 import kerbal.container.ForwardListPrinter
 import kerbal.container.ListPrinter
 import kerbal.container.SingleListPrinter
-import kerbal.container.VectorPrinter
+import kerbal.container.Vector
