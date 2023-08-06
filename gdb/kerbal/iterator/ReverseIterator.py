@@ -10,6 +10,7 @@
 #
 
 from kerbal.base_class_types import base_class_types
+from kerbal.lookup import class_lookup
 from kerbal.register_class import register_class
 
 
@@ -23,14 +24,29 @@ class ReverseIterator:
         self.__val = val
 
         self.__is_inplace = self.__val.type.template_argument(1)
-        reverse_iterator_base_type = self.__val.type.template_argument(0)
-        self.__reverse_iterator_base_ptr_type = reverse_iterator_base_type.pointer()
+        self.__base_type = self.__val.type.template_argument(0)
 
     def is_inplace(self):
         return self.__is_inplace
 
+    def actual(self):
+        base = self.base()
+        binded_type_of_base = class_lookup(base)
+        if binded_type_of_base is None:
+            return None
+
+        binded_base_cxx_val = binded_type_of_base(base)
+
+        if not self.__is_inplace:
+            print(binded_base_cxx_val.current())
+            binded_base_cxx_val.retreat()
+            print(binded_base_cxx_val.current())
+
+        print(binded_base_cxx_val.current())
+        return binded_base_cxx_val.get_val()
+
     def base(self):
-        return self.__val.address.cast(self.__reverse_iterator_base_ptr_type).dereference()
+        return self.__val["iter"]
 
     @staticmethod
     def get_printer(val):
@@ -42,6 +58,7 @@ class ReverseIteratorPrinter(ReverseIterator):
     def dump(self):
         base = self.base()
         d = []
+        d.append(("actual", self.actual()))
         if self.is_inplace():
             d.append(("base (in_place)", base))
         else:

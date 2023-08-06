@@ -10,13 +10,17 @@
 #
 
 import re
+import gdb
+
 
 def check_gdb_val_type(pattern_s):
     pattern = re.compile(pattern_s)
 
     def helper(init_fun):
-
         def wrapper(self, gdb_val):
+            if type(gdb_val) != gdb.Value:
+                raise TypeError("Expected: \"{}\", got: \"{}\"".format(pattern_s, type(gdb_val)))
+
             gdb_val_type_s = str(gdb_val.type.strip_typedefs())
             if not pattern.match(gdb_val_type_s):
                 raise TypeError("Expected: \"{}\", got: \"{}\"".format(pattern_s, gdb_val_type_s))

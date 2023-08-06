@@ -68,7 +68,13 @@ def class_lookup(cxx_value):
     found_class_type = value_type_str_to_class_map[s]
     if found_class_type is None:
         return None
+    return found_class_type
+
+
+def get_printer(cxx_value):
+    found_class_type = class_lookup(cxx_value)
+    if found_class_type is None:
+        return None
     return found_class_type.get_printer(cxx_value)
 
-
-gdb.pretty_printers.append(class_lookup)
+gdb.pretty_printers.append(get_printer)
