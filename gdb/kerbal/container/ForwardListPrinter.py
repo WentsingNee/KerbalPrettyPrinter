@@ -59,7 +59,7 @@ class ForwardListAllocatorUnrelatedPrinter:
 
     def head(self):
         d = [
-            ("head", self.__val["head_node"]),
+            ("head", self.__val["k_head"]),
         ]
         return d
 
@@ -73,7 +73,7 @@ class ForwardListAllocatorUnrelatedPrinter:
         fl_node_ptr_type = fl_node_type.pointer()
 
         i = 0
-        p = self.__val["head_node"]["next"]
+        p = self.__val["k_head"]["next"]
         while p:
             p_to_node = p.cast(fl_node_ptr_type)
             yield "[{}]".format(i), p_to_node.dereference()

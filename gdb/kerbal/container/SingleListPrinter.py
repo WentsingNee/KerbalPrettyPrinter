@@ -73,7 +73,7 @@ class SingleListAllocatorUnrelatedPrinter:
 
     def head(self):
         d = [
-            ("head", self.__val["head_node"]),
+            ("head", self.__val["k_head"]),
         ]
         return d
 
@@ -87,8 +87,8 @@ class SingleListAllocatorUnrelatedPrinter:
         sl_node_ptr_type = sl_node_type.pointer()
 
         i = 0
-        p = self.__val["head_node"]["next"]
-        while p != self.__val["head_node"].address:
+        p = self.__val["k_head"]["next"]
+        while p != self.__val["k_head"].address:
             p_to_node = p.cast(sl_node_ptr_type)
             yield "[{}]".format(i), p_to_node.dereference()
             i += 1

@@ -7,7 +7,7 @@
 		<Expand>
 			<CustomListItems MaxItemsPerView="50" ExcludeView="Test">
 				<Variable Name="size" InitialValue="0" />
-				<Variable Name="pNodeBase" InitialValue="head_node.next" />
+				<Variable Name="pNodeBase" InitialValue="k_head.next" />
 				<Variable Name="pNode" InitialValue="static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(nullptr)" />
 				<Loop>
 					<If Condition="pNodeBase == nullptr">
