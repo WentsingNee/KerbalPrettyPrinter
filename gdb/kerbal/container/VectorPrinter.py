@@ -14,7 +14,7 @@ from kerbal.register_printer import register_printer
 
 
 @register_printer("^kerbal::container::detail::vector_allocator_unrelated<.*>$")
-class VectorAllocatorUnrelatedPrinter:
+class VectorTypeOnlyPrinter:
 
     def __init__(self, val):
         """
@@ -52,14 +52,14 @@ class VectorAllocatorUnrelatedPrinter:
 
 
 @register_printer("^kerbal::container::vector<.*,.*>$")
-class VectorPrinter(ContainerAllocatorOverloadPrinter, VectorAllocatorUnrelatedPrinter):
+class VectorPrinter(ContainerAllocatorOverloadPrinter, VectorTypeOnlyPrinter):
 
     def __init__(self, val):
         """
         @param val: gdb.Value
         """
         ContainerAllocatorOverloadPrinter.__init__(self, val)
-        VectorAllocatorUnrelatedPrinter.__init__(self, val)
+        VectorTypeOnlyPrinter.__init__(self, val)
 
     def dump(self):
         d = dict(self.children())

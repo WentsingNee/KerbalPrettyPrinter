@@ -63,7 +63,7 @@ class SingleListNodePrinter:
 
 
 @register_printer("^kerbal::container::detail::sl_allocator_unrelated<.*>$")
-class SingleListAllocatorUnrelatedPrinter:
+class SingleListTypeOnlyPrinter:
 
     def __init__(self, val):
         """
@@ -103,14 +103,14 @@ class SingleListAllocatorUnrelatedPrinter:
 
 
 @register_printer("^kerbal::container::single_list<.*,.*>$")
-class SingleListPrinter(ContainerRebindAllocatorOverloadPrinter, SingleListAllocatorUnrelatedPrinter):
+class SingleListPrinter(ContainerRebindAllocatorOverloadPrinter, SingleListTypeOnlyPrinter):
 
     def __init__(self, val):
         """
         @param val: gdb.Value
         """
         ContainerRebindAllocatorOverloadPrinter.__init__(self, val)
-        SingleListAllocatorUnrelatedPrinter.__init__(self, val)
+        SingleListTypeOnlyPrinter.__init__(self, val)
 
     def dump(self):
         d = dict(self.children())

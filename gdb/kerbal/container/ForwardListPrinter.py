@@ -49,7 +49,7 @@ class ForwardListConstIteratorPrinter(ForwardListIteratorPrinterBase):
 
 
 @register_printer("^kerbal::container::detail::fl_allocator_unrelated<.*>$")
-class ForwardListAllocatorUnrelatedPrinter:
+class ForwardListTypeOnlyPrinter:
 
     def __init__(self, val):
         """
@@ -89,14 +89,14 @@ class ForwardListAllocatorUnrelatedPrinter:
 
 
 @register_printer("^kerbal::container::forward_list<.*,.*>$")
-class ForwardListPrinter(ContainerRebindAllocatorOverloadPrinter, ForwardListAllocatorUnrelatedPrinter):
+class ForwardListPrinter(ContainerRebindAllocatorOverloadPrinter, ForwardListTypeOnlyPrinter):
 
     def __init__(self, val):
         """
         @param val: gdb.Value
         """
         ContainerRebindAllocatorOverloadPrinter.__init__(self, val)
-        ForwardListAllocatorUnrelatedPrinter.__init__(self, val)
+        ForwardListTypeOnlyPrinter.__init__(self, val)
 
     def dump(self):
         d = dict(self.children())

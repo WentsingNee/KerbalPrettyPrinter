@@ -97,7 +97,7 @@ class ListConstIteratorPrinter(ListIteratorPrinterBase):
 
 
 @register_printer("^kerbal::container::detail::list_allocator_unrelated<.*>$")
-class ListAllocatorUnrelatedPrinter:
+class ListTypeOnlyPrinter:
 
     def __init__(self, val):
         """
@@ -137,14 +137,14 @@ class ListAllocatorUnrelatedPrinter:
 
 
 @register_printer("^kerbal::container::list<.*,.*>$")
-class ListPrinter(ContainerRebindAllocatorOverloadPrinter, ListAllocatorUnrelatedPrinter):
+class ListPrinter(ContainerRebindAllocatorOverloadPrinter, ListTypeOnlyPrinter):
 
     def __init__(self, val):
         """
         @param val: gdb.Value
         """
         ContainerRebindAllocatorOverloadPrinter.__init__(self, val)
-        ListAllocatorUnrelatedPrinter.__init__(self, val)
+        ListTypeOnlyPrinter.__init__(self, val)
 
     def dump(self):
         d = dict(self.children())
