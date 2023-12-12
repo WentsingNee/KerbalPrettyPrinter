@@ -30,7 +30,7 @@
 
 	<Type Name="kerbal::container::detail::fl_kiter&lt;*&gt;">
 		<Expand>
-			<Item Name="*">static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(current)</Item>
+			<Item Name="*">static_cast&lt;const kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(current)</Item>
 		</Expand>
 	</Type>
 

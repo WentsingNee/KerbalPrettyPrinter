@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--2023-02-01-->
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+	<Type Name="kerbal::container::avl_set&lt;*,*,*&gt;">
+		<DisplayString>{{ avl_set }}</DisplayString>
+		<Expand>
+			<Item Name="[size]">k_size</Item>
+			<TreeItems>
+				<Size>k_size</Size>
+				<HeadPointer>k_head.left</HeadPointer>
+				<LeftPointer>left</LeftPointer>
+				<RightPointer>right</RightPointer>
+				<ValueNode Condition="this != &amp;avl_vnull_node_helper&lt;0&gt;::vnull_node">
+					* static_cast&lt;kerbal::container::detail::avl_node&lt;$T1&gt; * &gt;(this)
+				</ValueNode>
+			</TreeItems>
+		</Expand>
+	</Type>
+
+</AutoVisualizer>

@@ -2,11 +2,35 @@
 <!--2023-02-01-->
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
 
-	<Type Name="kerbal::container::detail::sl_node&lt;*&gt;">
+	<Type Name="kerbal::container::single_list&lt;*,*&gt;">
+		<DisplayString>{{ single_list }}</DisplayString>
 		<Expand>
-			<Item Name="value">value</Item>
-			<Item Name="this">static_cast&lt;void * &gt;(this)</Item>
-			<Item Name="next">static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(next)</Item>
+			<CustomListItems MaxItemsPerView="50" ExcludeView="Test">
+				<Variable Name="size" InitialValue="0" />
+				<Variable Name="pNodeBase" InitialValue="k_head.next" />
+				<Variable Name="pNode" InitialValue="static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(nullptr)" />
+				<Loop>
+					<If Condition="pNodeBase == nullptr">
+						<Break/>
+					</If>
+					<Exec>pNode = static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(pNodeBase)</Exec>
+					<Item>pNode</Item>
+					<Exec>pNodeBase = pNodeBase->next</Exec>
+					<Exec>++size</Exec>
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+
+	<Type Name="kerbal::container::detail::sl_iter&lt;*&gt;">
+		<Expand>
+			<Item Name="*">static_cast&lt;kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(current->next)</Item>
+		</Expand>
+	</Type>
+
+	<Type Name="kerbal::container::detail::sl_kiter&lt;*&gt;">
+		<Expand>
+			<Item Name="*">static_cast&lt;const kerbal::container::detail::sl_node&lt;$T1&gt; * &gt;(current->next)</Item>
 		</Expand>
 	</Type>
 

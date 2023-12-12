@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--2023-02-01-->
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+	<Type Name="kerbal::container::list&lt;*,*&gt;">
+		<DisplayString>{{ list }}</DisplayString>
+		<Expand>
+			<CustomListItems MaxItemsPerView="50" ExcludeView="Test">
+				<Variable Name="pNodeBase" InitialValue="k_head.next" />
+				<Variable Name="pNode" InitialValue="static_cast&lt;kerbal::container::detail::list_node&lt;$T1&gt; * &gt;(nullptr)" />
+				<Variable Name="pEnd" InitialValue="&amp;k_head" />
+				<Loop>
+					<If Condition="pNodeBase == pEnd">
+						<Break/>
+					</If>
+					<Exec>pNode = static_cast&lt;kerbal::container::detail::list_node&lt;$T1&gt; * &gt;(pNodeBase)</Exec>
+					<Item>pNode</Item>
+					<Exec>pNodeBase = pNodeBase->next</Exec>
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+
+	<Type Name="kerbal::container::detail::list_iter&lt;*&gt;">
+		<Expand>
+			<Item Name="*">* static_cast&lt;kerbal::container::detail::list_node&lt;$T1&gt; * &gt;(current)</Item>
+		</Expand>
+	</Type>
+
+	<Type Name="kerbal::container::detail::list_kiter&lt;*&gt;">
+		<Expand>
+			<Item Name="*">* static_cast&lt;const kerbal::container::detail::list_node&lt;$T1&gt; * &gt;(current)</Item>
+		</Expand>
+	</Type>
+
+</AutoVisualizer>
