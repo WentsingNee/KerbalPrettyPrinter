@@ -13,4 +13,7 @@ set(KERBAL_GDB_PRETTY_PRINTER_INSTALL_DIR ${CMAKE_INSTALL_DATADIR}/gdb)
 install(
         DIRECTORY kerbal
         DESTINATION ${KERBAL_GDB_PRETTY_PRINTER_INSTALL_DIR}
+        FILES_MATCHING
+            PATTERN "*.py"
+            PATTERN "__pycache__" EXCLUDE
 )
