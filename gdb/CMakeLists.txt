@@ -14,3 +14,10 @@ install(
         DIRECTORY kerbal
         DESTINATION ${KERBAL_GDB_PRETTY_PRINTER_INSTALL_DIR}
 )
+
+set(generate_gdbinit_suggestion "${CMAKE_BINARY_DIR}/cpack/pretty_printer/gdb/generate_gdbinit_suggestion.cmake")
+configure_file(
+        generate_gdbinit_suggestion.cmake.in
+        "${generate_gdbinit_suggestion}"
+        @ONLY
+)

@@ -1,0 +1,17 @@
+echo "\
+We recommend you to add these lines
+
+\`\`\`
+python
+import sys
+sys.path.append('@CMAKE_INSTALL_PREFIX@/@KERBAL_GDB_PRETTY_PRINTER_INSTALL_DIR@')
+import kerbal
+end
+\`\`\`
+
+to one of each followings:
+
+~/.config/gdb/gdbinit
+~/.gdbinit
+./.gdbinit
+"
