@@ -17,3 +17,10 @@ install(
             PATTERN "*.py"
             PATTERN "__pycache__" EXCLUDE
 )
+
+set(generate_gdbinit_suggestion "${KERBAL_CONFIGURE_ASSETS_DIR}/cpack/config/pretty_printer/gdb/generate_gdbinit_suggestion.cmake")
+configure_file(
+        generate_gdbinit_suggestion.cmake.in
+        "${generate_gdbinit_suggestion}"
+        @ONLY
+)
