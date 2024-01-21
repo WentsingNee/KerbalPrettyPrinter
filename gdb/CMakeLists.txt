@@ -17,3 +17,10 @@ install(
             PATTERN "*.py"
             PATTERN "__pycache__" EXCLUDE
 )
+
+set(generate_gdbinit_suggestion "${CMAKE_BINARY_DIR}/configure_assets/cpack/config/pretty_printer/gdb/generate_gdbinit_suggestion.cmake")
+configure_file(
+        generate_gdbinit_suggestion.cmake.in
+        "${generate_gdbinit_suggestion}"
+        @ONLY
+)

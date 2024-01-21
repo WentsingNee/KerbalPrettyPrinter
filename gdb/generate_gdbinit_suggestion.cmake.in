@@ -1,0 +1,21 @@
+#
+# @file       generate_gdbinit_suggestion.cmake.in
+# @brief
+# @date       2024-01-20
+# @author     Peter
+# @copyright
+#      Peter of [ThinkSpirit Laboratory](http://thinkspirit.org/)
+#   of [Nanjing University of Information Science & Technology](http://www.nuist.edu.cn/)
+#   all rights reserved
+#
+
+if (CPACK_GENERATOR MATCHES "DEB")
+    set(KERBAL_GDB_PRETTY_PRINTER_INSTALL_DIR "@KERBAL_PRETTY_PRINTER_GDB_INSTALL_DIR@")
+    set(postinst "${CPACK_PACKAGE_DIRECTORY}/configure_assets/cpack/deb/control/postinst")
+    configure_file(
+            "@CMAKE_CURRENT_SOURCE_DIR@/gdbinit_suggestion.in"
+            "${postinst}"
+    )
+    list(APPEND CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${postinst}")
+endif ()
+
