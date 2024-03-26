@@ -9,9 +9,8 @@
 #   all rights reserved
 #
 
-set(KERBAL_PRETTY_PRINTER_NATVIS_INSTALL_DEST "C:/Users/Peter/Documents/Visual Studio 2022/Visualizers")
+set(KERBAL_PRETTY_PRINTER_NATVIS_INSTALL_DIR "${CMAKE_INSTALL_DATADIR}/Visualizers")
 
-message("\n\n")
 message(STATUS "Configuring natvis files")
 
 file(GLOB_RECURSE natvis_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ "*.natvis")
@@ -21,7 +20,7 @@ foreach (file ${natvis_files})
     message(STATUS "Add natvis ${natvis_install_name} <= ${CMAKE_CURRENT_SOURCE_DIR}/kerbal/${file}")
     install(
             FILES ${file}
-            DESTINATION ${KERBAL_PRETTY_PRINTER_NATVIS_INSTALL_DEST}
+            DESTINATION ${KERBAL_PRETTY_PRINTER_NATVIS_INSTALL_DIR}
             RENAME ${natvis_install_name}
     )
 endforeach ()
