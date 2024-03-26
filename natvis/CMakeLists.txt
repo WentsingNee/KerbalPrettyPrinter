@@ -14,7 +14,7 @@ set(KERBAL_PRETTY_PRINTER_NATVIS_INSTALL_DIR "${CMAKE_INSTALL_DATADIR}/Visualize
 message(STATUS "Configuring natvis files")
 
 file(GLOB_RECURSE natvis_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/ "*.natvis")
-foreach (file ${natvis_files})
+foreach (file IN LISTS natvis_files)
     string(REPLACE "/" "." natvis_install_name "${file}")
     set(natvis_install_name "kerbal.${natvis_install_name}")
     message(STATUS "Add natvis ${natvis_install_name} <= ${CMAKE_CURRENT_SOURCE_DIR}/kerbal/${file}")
