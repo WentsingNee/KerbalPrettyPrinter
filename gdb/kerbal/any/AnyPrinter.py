@@ -12,7 +12,7 @@
 import re
 
 from kerbal.base_class_types import base_class_types
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
 
 import gdb
@@ -38,7 +38,7 @@ class AnyAllocatorOverload(MemberCompressHelper):
         return d
 
 
-@register_printer("^kerbal::any::basic_any<.*,.*,.*>$")
+@kerbal_printer.register_template_printer("^kerbal::any::basic_any<.*,.*,.*>$")
 class AnyPrinter(AnyAllocatorOverload):
 
     def __init__(self, val):

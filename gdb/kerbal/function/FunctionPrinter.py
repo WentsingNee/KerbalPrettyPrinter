@@ -37,7 +37,7 @@ class FunctionAllocatorOverload(MemberCompressHelper):
         return d
 
 
-# @register_printer("^kerbal::function::basic_function<.*,.*,.*>$")
+# @kerbal_printer.register_template_printer("^kerbal::function::basic_function<.*,.*,.*>$")
 class FunctionPrinter(FunctionAllocatorOverload):
 
     def __init__(self, val):

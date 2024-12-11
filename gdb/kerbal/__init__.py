@@ -9,8 +9,6 @@
 #   all rights reserved
 #
 
-from kerbal import lookup
-
 from kerbal import any
 from kerbal import bitset
 from kerbal import container

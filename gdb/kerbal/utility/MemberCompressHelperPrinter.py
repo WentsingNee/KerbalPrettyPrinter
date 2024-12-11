@@ -12,7 +12,7 @@
 import re
 
 from kerbal.base_class_types import base_class_types
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 
 
 class MemberCompressHelper:
@@ -76,7 +76,7 @@ class MemberCompressHelper:
             return self.__val["k_member"]
 
 
-@register_printer("^kerbal::utility::member_compress_helper<.*,.*>$")
+@kerbal_printer.register_template_printer("^kerbal::utility::member_compress_helper<.*,.*>$")
 class MemberCompressHelperPrinter(MemberCompressHelper):
 
     def dump(self):

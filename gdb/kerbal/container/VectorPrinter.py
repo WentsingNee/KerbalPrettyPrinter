@@ -10,10 +10,10 @@
 #
 
 from kerbal.container.ContainerAllocatorOverloadPrinter import ContainerAllocatorOverloadPrinter
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 
 
-@register_printer("^kerbal::container::detail::vector_allocator_unrelated<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::vector_allocator_unrelated<.*>$")
 class VectorTypeOnlyPrinter:
 
     def __init__(self, val):
@@ -51,7 +51,7 @@ class VectorTypeOnlyPrinter:
             yield e
 
 
-@register_printer("^kerbal::container::vector<.*,.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::vector<.*,.*>$")
 class VectorPrinter(ContainerAllocatorOverloadPrinter, VectorTypeOnlyPrinter):
 
     def __init__(self, val):

@@ -11,10 +11,10 @@
 
 from kerbal.base_class_types import base_class_types
 from kerbal.memory.RawStoragePrinter import RawStoragePrinter
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 
 
-@register_printer("^kerbal::optional::optional<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::optional::optional<.*>$")
 class OptionalPrinter:
 
     def __init__(self, val):

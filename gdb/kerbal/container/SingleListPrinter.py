@@ -11,12 +11,12 @@
 
 from kerbal.base_class_types import base_class_types
 from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRebindAllocatorOverloadPrinter
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 
 import gdb
 
 
-@register_printer("^kerbal::container::detail::sl_node_base$")
+@kerbal_printer.register_printer("kerbal::container::detail::sl_node_base")
 class SingleListNodeBasePrinter:
 
     def __init__(self, val):
@@ -39,7 +39,7 @@ class SingleListNodeBasePrinter:
         return self.dump()
 
 
-@register_printer("^kerbal::container::detail::sl_node<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::sl_node<.*>$")
 class SingleListNodePrinter:
 
     def __init__(self, val):
@@ -62,7 +62,7 @@ class SingleListNodePrinter:
         return self.dump()
 
 
-@register_printer("^kerbal::container::detail::sl_allocator_unrelated<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::sl_allocator_unrelated<.*>$")
 class SingleListTypeOnlyPrinter:
 
     def __init__(self, val):
@@ -102,7 +102,7 @@ class SingleListTypeOnlyPrinter:
             yield e
 
 
-@register_printer("^kerbal::container::single_list<.*,.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::single_list<.*,.*>$")
 class SingleListPrinter(ContainerRebindAllocatorOverloadPrinter, SingleListTypeOnlyPrinter):
 
     def __init__(self, val):

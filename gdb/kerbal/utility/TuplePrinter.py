@@ -10,11 +10,11 @@
 #
 
 from kerbal.base_class_types import base_class_types
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
 
 
-@register_printer("^kerbal::utility::tuple<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::utility::tuple<.*>$")
 class TuplePrinter:
 
     def __init__(self, val):

@@ -9,10 +9,10 @@
 #   all rights reserved
 #
 
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 
 
-@register_printer("kerbal::utility::noncopyconstructible")
+@kerbal_printer.register_printer("kerbal::utility::noncopyconstructible")
 class NoncopyconstructiblePrinter:
 
     def __init__(self, val):
@@ -26,7 +26,7 @@ class NoncopyconstructiblePrinter:
         return ""
 
 
-@register_printer("kerbal::utility::noncopyassignable")
+@kerbal_printer.register_printer("kerbal::utility::noncopyassignable")
 class NoncopyassignablePrinter:
 
     def __init__(self, val):
@@ -40,7 +40,7 @@ class NoncopyassignablePrinter:
         return ""
 
 
-@register_printer("kerbal::utility::noncopyable")
+@kerbal_printer.register_printer("kerbal::utility::noncopyable")
 class NoncopyablePrinter:
 
     def __init__(self, val):

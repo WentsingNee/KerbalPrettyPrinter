@@ -9,10 +9,10 @@
 #   all rights reserved
 #
 
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 
 
-@register_printer("^kerbal::iterator::reverse_iterator<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::iterator::reverse_iterator<.*>$")
 class ReverseIteratorPrinter:
 
     def __init__(self, val):

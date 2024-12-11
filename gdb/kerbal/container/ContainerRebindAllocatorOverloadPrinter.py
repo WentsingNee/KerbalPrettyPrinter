@@ -10,11 +10,11 @@
 #
 
 from kerbal.base_class_types import base_class_types
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 from kerbal.utility.MemberCompressHelperPrinter import MemberCompressHelper
 
 
-@register_printer("^kerbal::container::detail::container_rebind_allocator_overload<.*,.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::container_rebind_allocator_overload<.*,.*>$")
 class ContainerRebindAllocatorOverloadPrinter(MemberCompressHelper):
 
     def __init__(self, val):

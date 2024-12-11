@@ -9,10 +9,10 @@
 #   all rights reserved
 #
 
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 
 
-@register_printer("^kerbal::memory::raw_storage<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::memory::raw_storage<.*>$")
 class RawStoragePrinter:
 
     def __init__(self, val):

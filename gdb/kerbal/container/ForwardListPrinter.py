@@ -10,7 +10,7 @@
 #
 
 from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRebindAllocatorOverloadPrinter
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 
 import gdb
 
@@ -38,17 +38,17 @@ class ForwardListIteratorPrinterBase:
         return self.dump()
 
 
-@register_printer("^kerbal::container::detail::fl_iter<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::fl_iter<.*>$")
 class ForwardListIteratorPrinter(ForwardListIteratorPrinterBase):
     pass
 
 
-@register_printer("^kerbal::container::detail::fl_kiter<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::fl_kiter<.*>$")
 class ForwardListConstIteratorPrinter(ForwardListIteratorPrinterBase):
     pass
 
 
-@register_printer("^kerbal::container::detail::fl_allocator_unrelated<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::fl_allocator_unrelated<.*>$")
 class ForwardListTypeOnlyPrinter:
 
     def __init__(self, val):
@@ -88,7 +88,7 @@ class ForwardListTypeOnlyPrinter:
             yield e
 
 
-@register_printer("^kerbal::container::forward_list<.*,.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::forward_list<.*,.*>$")
 class ForwardListPrinter(ContainerRebindAllocatorOverloadPrinter, ForwardListTypeOnlyPrinter):
 
     def __init__(self, val):

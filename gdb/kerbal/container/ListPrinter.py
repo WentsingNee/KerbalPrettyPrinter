@@ -11,12 +11,12 @@
 
 from kerbal.base_class_types import base_class_types
 from kerbal.container.ContainerRebindAllocatorOverloadPrinter import ContainerRebindAllocatorOverloadPrinter
-from kerbal.register_printer import register_printer
+from kerbal.register_printer import kerbal_printer
 
 import gdb
 
 
-@register_printer("^kerbal::container::detail::list_node_base$")
+@kerbal_printer.register_printer("kerbal::container::detail::list_node_base")
 class ListNodeBasePrinter:
 
     def __init__(self, val):
@@ -40,7 +40,7 @@ class ListNodeBasePrinter:
         return self.dump()
 
 
-@register_printer("^kerbal::container::detail::list_node<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::list_node<.*>$")
 class ListNodePrinter:
 
     def __init__(self, val):
@@ -86,17 +86,17 @@ class ListIteratorPrinterBase:
         return self.dump()
 
 
-@register_printer("^kerbal::container::detail::list_iter<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::list_iter<.*>$")
 class ListIteratorPrinter(ListIteratorPrinterBase):
     pass
 
 
-@register_printer("^kerbal::container::detail::list_kiter<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::list_kiter<.*>$")
 class ListConstIteratorPrinter(ListIteratorPrinterBase):
     pass
 
 
-@register_printer("^kerbal::container::detail::list_allocator_unrelated<.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::detail::list_allocator_unrelated<.*>$")
 class ListTypeOnlyPrinter:
 
     def __init__(self, val):
@@ -136,7 +136,7 @@ class ListTypeOnlyPrinter:
             yield e
 
 
-@register_printer("^kerbal::container::list<.*,.*>$")
+@kerbal_printer.register_template_printer("^kerbal::container::list<.*,.*>$")
 class ListPrinter(ContainerRebindAllocatorOverloadPrinter, ListTypeOnlyPrinter):
 
     def __init__(self, val):
