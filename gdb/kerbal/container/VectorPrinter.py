@@ -25,23 +25,26 @@ class VectorTypeOnlyPrinter:
     def size(self):
         return self.__val["k_size"]
 
+    def capacity(self):
+        return self.__val["k_capacity"]
+
+    def data(self):
+        return self.__val["k_buffer"]
+
+    def __getitem__(self, i):
+        return self.data()[i]
+
     def head(self):
-        d = [
-            ("capacity", self.__val["k_capacity"]),
-            ("size", self.__val["k_size"]),
-        ]
-        return d
+        yield "capacity", self.capacity()
+        yield "size", self.size()
 
     def dump(self):
         d = dict(self.children())
         return d
 
     def each(self):
-        i = 0
-        sz = self.size()
-        while i < sz:
-            yield "[{}]".format(i), self.__val["k_buffer"][i]
-            i = i + 1
+        for i in range(self.size()):
+            yield f"[{i}]", self[i]
 
     def children(self):
         for e in self.head():

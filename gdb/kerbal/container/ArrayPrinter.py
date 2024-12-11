@@ -28,9 +28,12 @@ class ArrayPrinter:
         d = dict(self.children())
         return d
 
+    def __getitem__(self, i):
+        return self.__val["k_data"][i]
+
     def each(self):
         for i in range(self.size()):
-            yield "[{}]".format(i), self.__val["k_data"][i]
+            yield f"[{i}]", self[i]
 
     def children(self):
         for e in self.each():

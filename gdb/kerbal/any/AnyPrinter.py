@@ -65,6 +65,9 @@ class AnyPrinter(AnyAllocatorOverload):
 
     void_type = gdb.lookup_type("void")
 
+    def __any_storage(self):
+        return self.__val["k_storage"]["k_storage"]
+
     def children(self):
         for e in AnyAllocatorOverload.dump(self):
             yield e
@@ -74,5 +77,5 @@ class AnyPrinter(AnyAllocatorOverload):
         has_value = manage_type != AnyPrinter.void_type
         if has_value:
             manage_type_ptr = manage_type.pointer()
-            yield "value (if inlined)", self.__val["k_storage"]["buffer"].address.cast(manage_type_ptr).dereference()
-            yield "value (if not inlined)", self.__val["k_storage"]["ptr"].cast(manage_type_ptr).dereference()
+            yield "value (if inlined)", self.__any_storage()["buffer"].address.cast(manage_type_ptr).dereference()
+            yield "value (if not inlined)", self.__any_storage()["ptr"].cast(manage_type_ptr).dereference()

@@ -30,16 +30,17 @@ class StaticBitsetPrinter:
     def block_type(self):
         return self.__val.type.template_argument(1)
 
-    def f(self, x):
-        r = str()
-        for i in range(self.block_type().sizeof):
+    @staticmethod
+    def f(block, block_width):
+        r = ""
+        for i in range(block_width):
             for j in range(8):
                 index = i * 8 + j
-                if (x >> index) & 1 == 0:
-                    r = r + '0'
+                if (block >> index) & 1 == 0:
+                    r += '0'
                 else:
-                    r = r + '1'
-            r = r + ' '
+                    r += '1'
+            r += ' '
         return r
 
     def each(self):
@@ -47,11 +48,11 @@ class StaticBitsetPrinter:
         for i in range(self.block_size()):
             l = i * block_width * 8
             r = (i + 1) * block_width * 8
-            x = self.f(self.__val["k_block"][i])
-            yield "{} ~ {} : {}".format(l, r, x), x
+            x = self.f(self.__val["k_block"][i], block_width)
+            yield f"[{i}] [{l}, {r}) : {x}", 0
 
     def children(self):
-        yield "size: ", self.size()
-        yield "block size: ", self.block_size()
+        yield "size", self.size()
+        yield "block size", self.block_size()
         for e in self.each():
             yield e
