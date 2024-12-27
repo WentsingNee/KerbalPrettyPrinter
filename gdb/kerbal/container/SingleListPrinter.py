@@ -83,14 +83,14 @@ class SingleListTypeOnlyPrinter:
 
     def each(self):
         value_type = self.__val.type.template_argument(0)
-        sl_node_type = gdb.lookup_type("kerbal::container::detail::sl_node<{}>".format(str(value_type)))
+        sl_node_type = gdb.lookup_type(f"kerbal::container::detail::sl_node<{str(value_type)}>")
         sl_node_ptr_type = sl_node_type.pointer()
 
         i = 0
         p = self.__val["k_head"]["next"]
         while p != self.__val["k_head"].address:
             p_to_node = p.cast(sl_node_ptr_type)
-            yield "[{}]".format(i), p_to_node.dereference()
+            yield f"[{i}]", p_to_node.dereference()
             i += 1
             p = p["next"]
 

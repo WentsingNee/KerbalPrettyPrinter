@@ -30,9 +30,9 @@ class ListNodeBasePrinter:
 
     def dump(self):
         d = [
-            ("prev", self.__val["prev"].reinterpret_cast(ListNodeBasePrinter.void_ptr_type)),
+            ("prev", self.__val["prev"]),
             ("this", self.__val.address),
-            ("next", self.__val["next"].reinterpret_cast(ListNodeBasePrinter.void_ptr_type)),
+            ("next", self.__val["next"]),
         ]
         return d
 
@@ -73,7 +73,7 @@ class ListIteratorPrinterBase:
 
     def dump(self):
         value_type = self.__val.type.template_argument(0)
-        list_node_type = gdb.lookup_type("kerbal::container::detail::list_node<{}>".format(str(value_type)))
+        list_node_type = gdb.lookup_type(f"kerbal::container::detail::list_node<{str(value_type)}>")
         list_node_ptr_type = list_node_type.pointer()
         d = []
         current = self.__val["current"]
@@ -117,14 +117,14 @@ class ListTypeOnlyPrinter:
 
     def each(self):
         value_type = self.__val.type.template_argument(0)
-        list_node_type = gdb.lookup_type("kerbal::container::detail::list_node<{}>".format(str(value_type)))
+        list_node_type = gdb.lookup_type(f"kerbal::container::detail::list_node<{str(value_type)}>")
         list_node_ptr_type = list_node_type.pointer()
 
         i = 0
         p = self.__val["k_head"]["next"]
         while p != self.__val["k_head"].address:
             p_to_node = p.cast(list_node_ptr_type)
-            yield "[{}]".format(i), p_to_node.dereference()
+            yield f"[{i}]", p_to_node.dereference()
             i += 1
             p = p["next"]
 

@@ -54,9 +54,9 @@ class TuplePrinter:
         for idx in range(self.size()):
             member = self.get(idx)
             if self.i_is_compressed(idx):
-                d.append(("<{}> (compressed)".format(idx), member))
+                d.append((f"<{idx}> (compressed)", member))
             else:
-                d.append(("<{}>".format(idx), member))
+                d.append((f"<{idx}>", member))
 
             idx += 1
 

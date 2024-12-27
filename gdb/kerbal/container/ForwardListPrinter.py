@@ -25,7 +25,7 @@ class ForwardListIteratorPrinterBase:
 
     def dump(self):
         value_type = self.__val.type.template_argument(0)
-        fl_node_type = gdb.lookup_type("kerbal::container::detail::sl_node<{}>".format(str(value_type)))
+        fl_node_type = gdb.lookup_type(f"kerbal::container::detail::sl_node<{str(value_type)}>")
         fl_node_ptr_type = fl_node_type.pointer()
         d = []
         current = self.__val["current"]
@@ -69,14 +69,14 @@ class ForwardListTypeOnlyPrinter:
 
     def each(self):
         value_type = self.__val.type.template_argument(0)
-        fl_node_type = gdb.lookup_type("kerbal::container::detail::sl_node<{}>".format(str(value_type)))
+        fl_node_type = gdb.lookup_type(f"kerbal::container::detail::sl_node<{str(value_type)}>")
         fl_node_ptr_type = fl_node_type.pointer()
 
         i = 0
         p = self.__val["k_head"]["next"]
         while p:
             p_to_node = p.cast(fl_node_ptr_type)
-            yield "[{}]".format(i), p_to_node.dereference()
+            yield f"[{i}]", p_to_node.dereference()
             i += 1
             p = p["next"]
 

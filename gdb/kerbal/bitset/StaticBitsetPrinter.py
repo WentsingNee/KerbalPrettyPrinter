@@ -48,8 +48,9 @@ class StaticBitsetPrinter:
         for i in range(self.block_size()):
             l = i * block_width * 8
             r = (i + 1) * block_width * 8
-            x = self.f(self.__val["k_block"][i], block_width)
-            yield f"[{i}] [{l}, {r}) : {x}", 0
+            block = self.__val["k_block"][i]
+            x = self.f(block, block_width)
+            yield f"[{i}] [{l}, {r}) : {x}", block
 
     def children(self):
         yield "size", self.size()
